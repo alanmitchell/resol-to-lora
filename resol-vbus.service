@@ -1,0 +1,15 @@
+# Systemd service file for Node server which serves current Resol readings
+# in JSON format.
+
+[Unit]
+Description=Resol Live Server
+
+[Service]
+Type=simple
+ExecStart=/home/alan/.nvm/versions/node/v18.16.0/bin/node  /resol-vbus/examples/json-live-data-server/index.js
+User=alan
+Restart=on-failure
+RestartSec=5s  # this means it waits 5 seconds before restarting the service
+
+[Install]
+WantedBy=multi-user.target
