@@ -1,0 +1,16 @@
+# Systemd service file for the Python program that requests sensor / relay
+# readings from resol-vbus server and then transmits them via LoRaWAN.
+
+[Unit]
+Description=Resol to LoRaWAN service
+After=resol-vbus.service
+
+[Service]
+Type=simple
+ExecStart=/home/alan/resol-to-lora/env/bin/python  /home/alan/resol-to-lora/main.py
+User=alan
+Restart=always
+RestartSec=5s  # this means it waits 5 seconds before restarting the service
+
+[Install]
+WantedBy=multi-user.target

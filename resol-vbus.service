@@ -8,7 +8,7 @@ Description=Resol Live Server
 Type=simple
 ExecStart=/home/alan/.nvm/versions/node/v18.16.0/bin/node  /home/alan/resol-vbus/examples/json-live-data-server/index.js
 User=alan
-Restart=on-failure
+Restart=always
 RestartSec=5s  # this means it waits 5 seconds before restarting the service
 
 [Install]
