@@ -1,0 +1,34 @@
+#!/bin/bash
+# Script to report Status information to a file on an inserted flash drive.
+
+# continue if errors
+set +e
+
+# get the Ethernet mac address of this computer to use in a file name.
+# remove colons
+mac=$(ip addr | grep link/ether | head -n1 | sed 's/^[[:space:]]*//' | cut -d ' ' -f2 | sed 's/://g')
+
+# now make a file name with the mac and date/time
+filename=/media/flash/$mac-$(date +%Y-%m-%d-%H%M%S)
+
+echo -e "free -m:\n" >> $filename
+free -m >> $filename
+
+echo -e "\n______________\ndf:\n" >> $filename
+df >> $filename
+
+echo -e "\n______________\nuptime:\n" >> $filename
+uptime >> $filename
+
+echo -e "\n______________\nps aux | grep resol:\n" >> $filename
+ps aux | grep resol >> $filename
+
+echo -e "\n______________\nresol-to-lora last commit:\n" >> $filename
+/usr/bin/git --git-dir=/home/alan/resol-to-lora/.git log -1  >> $filename
+
+echo -e "\n______________\nresol-to-lora settings.py:\n" >> $filename
+cat /home/alan/resol-to-lora/settings.py  >> $filename
+
+echo -e "\n______________\nCurrent date/time & date/time of last resol live json file:\n" >> $filename
+echo "Current $(date)" >> $filename
+echo "Resol live $(ls -l /home/alan/resol-vbus/examples/json-live-data-server/live-data.json)" >> $filename
