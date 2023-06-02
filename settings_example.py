@@ -4,7 +4,7 @@ that settings.py file as needed.
 """
 
 # Minimum number of minutes between posting readings via LoRaWAN
-POST_INTERVAL = 10.0
+POST_INTERVAL = 15.0
 
 # ------------
 # Unlikely to need to change the following settings
