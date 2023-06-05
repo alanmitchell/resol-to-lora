@@ -1,0 +1,13 @@
+# This is used for auto-mounting USB flash drives and for then initiating
+# a script to dump status information to the flash drive.
+# Make use the path in ExecStartPost below points to the status script
+# in the directory where resol-to-lora is located.
+# Copy this file to the /etc/systemd/system/ directory.
+
+[Unit]
+Description=Automount USB flash drive
+
+[Service]
+Type=oneshot
+ExecStart=/bin/systemd-mount /dev/%I /mnt/usb-%I
+ExecStartPost=/home/alan/resol-to-lora/status

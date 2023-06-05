@@ -1,0 +1,4 @@
+# This is used for auto-mounting USB flash drives.
+# The file should be copied to the /etc/udev/rules.d/ directory
+
+ACTION=="add", SUBSYSTEM=="block", ENV{DEVTYPE}=="partition", TAG+="systemd", ENV{SYSTEMD_WANTS}="usb-automount@%k.service"

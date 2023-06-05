@@ -4,9 +4,6 @@
 # continue if errors
 set +e
 
-mount /dev/sda1 /media/flash
-sleep 4
-
 # Full path of the script
 script_path="$(readlink -f "$0")"
 # Directory of the script
@@ -17,7 +14,7 @@ script_dir="$(dirname "$script_path")"
 mac=$(ip addr | grep link/ether | head -n1 | sed 's/^[[:space:]]*//' | cut -d ' ' -f2 | sed 's/://g')
 
 # now make a file name with the mac and date/time
-filename=/media/flash/$mac-$(date +%Y-%m-%d-%H%M%S)
+filename=/media/flash/$mac-$(date +%Y-%m-%d-%H%M%S).txt
 
 echo -e "free -m:\n" >> $filename
 free -m >> $filename
@@ -44,4 +41,4 @@ echo "Resol live: $(ls -l $script_dir/../resol-vbus/examples/json-live-data-serv
 echo -e "\n______________\nLive Resol Data file:\n" >> $filename
 cat $script_dir/../resol-vbus/examples/json-live-data-server/live-data.json  >> $filename
 
-umount /dev/sda1
+umount /mnt/usb-sda1
