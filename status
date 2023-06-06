@@ -41,4 +41,7 @@ echo "Resol live: $(ls -l $script_dir/../resol-vbus/examples/json-live-data-serv
 echo -e "\n______________\nLive Resol Data file:\n" >> $filename
 cat $script_dir/../resol-vbus/examples/json-live-data-server/live-data.json  >> $filename
 
+echo -e "\n______________\nLog File or resol-to-lora script:\n" >> $filename
+cat $script_dir/../log/resol-to-lora.log  >> $filename
+
 umount /mnt/usb-sda1
