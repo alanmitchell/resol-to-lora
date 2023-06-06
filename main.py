@@ -2,6 +2,7 @@
 live JSON server, and then send those readings via LoRaWAN.
 """
 import time
+import os
 import logging
 from logging.handlers import RotatingFileHandler
 from struct import pack, unpack
@@ -35,11 +36,17 @@ def get_val(ch_name, ch_id, name_dict, id_dict, default_val):
     )
     return val
 
+# Get the absolute path of the script
+script_path = os.path.abspath(__file__)
+
+# Get the directory name of the script
+script_directory = os.path.dirname(script_path)
+
 # Create a rotating file logger, which also logs to the console.
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 formatter = logging.Formatter('%(asctime)s|%(name)s|%(levelname)s|%(message)s')
-handler = RotatingFileHandler('../log/resol-to-lora.log', maxBytes=5000, backupCount=5)
+handler = RotatingFileHandler(f'{script_directory}/../log/resol-to-lora.log', maxBytes=5000, backupCount=5)
 handler.setFormatter(formatter)
 logger.addHandler(handler)
 
@@ -47,10 +54,10 @@ console_handler = logging.StreamHandler()
 console_handler.setFormatter(formatter)
 logger.addHandler(console_handler)
 
+logger.info('Script started')
+
 # make object to use the E5 LoRaWAN board
 lora_board = Board(port=settings.E5_PORT, downlink_callback=process_downlink)
-
-logger.info('Script started')
 
 # Give time for Resol live server to start up and for E5 Lora Board to join.
 time.sleep(10)
