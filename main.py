@@ -121,7 +121,6 @@ while True:
             # 2-byte integer is big enough to hold 14 relay values
             up_list.append( (relay_val, 2) )
 
-            print(up_list)
             lora_board.send_uplink(up_list)
     
     except:
