@@ -20,4 +20,5 @@ crontab (sudo crontab -e).
 
 * A Resol [VBus/USB Interface Adapter](https://www.resol.de/en/produktdetail/13) is used to interface to the Resol controller.
 
-* A [SEEED Studio LoRa WIO-E5 mini board](https://www.seeedstudio.com/LoRa-E5-mini-STM32WLE5JC-p-4869.html) is used to transmit data via LoRaWAN.  These are available through Digi-Key.
+* A [SEEED Studio LoRa WIO-E5 mini board](https://www.seeedstudio.com/LoRa-E5-mini-STM32WLE5JC-p-4869.html) is used to transmit data via LoRaWAN.  These are available through Digi-Key.  Each E5 mini needs to be configured using the `config_e5.py` script in this
+repo prior to using the E5 with this application.
