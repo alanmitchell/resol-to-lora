@@ -25,6 +25,8 @@ df >> $filename
 echo -e "\n______________\nuptime:\n" >> $filename
 uptime >> $filename
 
+echo -e "\n______________\nCPU Temperature: $((`cat /sys/class/thermal/thermal_zone0/temp`/1000)) deg C\n" >> $filename
+
 echo -e "\n______________\nps aux | grep resol:\n" >> $filename
 ps aux | grep resol >> $filename
 
