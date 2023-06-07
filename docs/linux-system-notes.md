@@ -7,7 +7,8 @@
 run the [JSON live data server](https://github.com/danielwippermann/resol-vbus/tree/master/examples/json-live-data-server).
 
 * Both this project (resol-to-lora) and the JSON live data server are configured to run
-as services through use of systemd.  See the systemd unit files in this repo.
+as services through use of systemd.  See the systemd unit files in this repo in the 
+`system-files` directory.
 
 * Status information is automatically copied to a file on a USB flash drive
 when a USB flash drive is inserted.  See the [status](../status) script in this repo.
