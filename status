@@ -40,10 +40,10 @@ echo -e "\n______________\nCurrent date/time & date/time of last resol live json
 echo "Current: $(date)" >> $filename
 echo "Resol live: $(ls -l $script_dir/../resol-vbus/examples/json-live-data-server/live-data.json)" >> $filename
 
-echo -e "\n______________\nLive Resol Data file:\n" >> $filename
-cat $script_dir/../resol-vbus/examples/json-live-data-server/live-data.json  >> $filename
-
 echo -e "\n______________\nLog File for resol-to-lora script:\n" >> $filename
 cat $script_dir/../log/resol-to-lora.log  >> $filename
+
+echo -e "\n______________\nLive Resol Data file:\n" >> $filename
+cat $script_dir/../resol-vbus/examples/json-live-data-server/live-data.json  >> $filename
 
 umount /mnt/usb-sda1
