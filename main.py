@@ -75,6 +75,10 @@ while True:
         if time.time() >= next_log_time:
             # update time to log next
             next_log_time += settings.POST_INTERVAL * 60.0
+            # clock could be rapidly adjusting forward after boot, so make sure this log time is 
+            # not within 30 seconds.
+            if next_log_time < time.time() + 30.0:
+                next_log_time = time.time() + settings.POST_INTERVAL * 60.0
 
             data_raw = requests.get(settings.RESOL_URL).json()
             
