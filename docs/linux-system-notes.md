@@ -3,6 +3,11 @@
 * Tested on a [Libre Le Potato board](https://libre.computer/products/aml-s905x-cc/) running 
 [Armbian 23.02.2 Jammy with Linux 6.1.11-meson64](https://www.armbian.com/lepotato/).
 
+  * An SD Card image file for the Le Potato(compressed with xz) is 
+  [available here](https://drive.google.com/file/d/11FL0MfN4Ghz2fjBJ-FRBNgZtUKJTwCgE/view?usp=sharing).
+  This automatically runs the resol-to-lora application upon power-up.  Contact the developer for the SSH
+  login credentials and more information.
+
 * The [resol-vbus GitHub project](https://github.com/danielwippermann/resol-vbus/tree/master) must be installed in order to
 run the [JSON live data server](https://github.com/danielwippermann/resol-vbus/tree/master/examples/json-live-data-server).
 
